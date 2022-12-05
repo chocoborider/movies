@@ -1,4 +1,5 @@
-# Movie Api - Empowerment labs backend
+# Movie Api - Empowerment labs backend 
+[link al repositorio](https://github.com/chocoborider/movies)
 
 ## Description
 
@@ -38,6 +39,9 @@ $ npm run start:prod
 ```
 
 ## Documentation
+
+### Compodoc
+
 This project uses compodoc for the documentation. On the movie-use-case.ts file there is an example of the documentation comments.
 
 Execute 
@@ -48,7 +52,9 @@ npx @compodoc/compodoc -p tsconfig.json -s
 
 Then you can open your browser and navigate to [the documentation](http://localhost:8080/)
 
-## Swagger (openapi)
+### Swagger
+
+You can run the project and then you can open your browser and navigate [to /docs to see the swagger documentation]([the documentation](http://localhost:3000/docs))
 
 ## Test
 

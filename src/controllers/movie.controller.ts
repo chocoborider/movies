@@ -14,7 +14,9 @@ import {
   CreateMovieNoteDto,
   UpdateMovieNoteDto,
 } from '../core/dtos/create-movie-note.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('movies')
 @Controller('api/movie')
 export class MovieController {
   constructor(private movieUseCases: MovieUseCases) {}

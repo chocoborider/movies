@@ -3,7 +3,9 @@ import { UserUseCases } from '../useCases/user/user.use-case';
 import { UserResponseDto } from '../core/dtos/user-response.dto';
 import { CreateUserDto, UpdateUserDto } from '../core/dtos/create-user.dto';
 import { UserFactoryService } from '../useCases/user/user-factory.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('api/user')
 export class UserController {
   constructor(
