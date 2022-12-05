@@ -17,17 +17,34 @@ export class MovieUseCases {
     private dataServices: IDataServices,
   ) {}
 
+  /**
+   * Get popular movies from the movie API DB Service
+   * @param paginationParamsDto
+   */
   async getPopularMovies(
     paginationParamsDto: PaginationParamsDto,
   ): Promise<PaginatedMoviesDto> {
     return this.apiServices.getPopularMovies(paginationParamsDto);
   }
+
+  /**
+   * Allows to search movies by title
+   * @param title
+   * @param language
+   */
   async searchMovieByTitle(
     title: string,
     language: string,
   ): Promise<PaginatedMoviesDto> {
     return this.apiServices.searchMovieByTitle(title, language);
   }
+
+  /**
+   * Allows to mark a movie as a favorite
+   * @param movieId
+   * @param language
+   * @param userId
+   */
   async setFavoriteMovie(movieId: number, language: string, userId: string) {
     const user = await this.dataServices.users.getByCriteria({ id: userId });
     const movie = await this.apiServices.get(movieId, language);
@@ -38,6 +55,12 @@ export class MovieUseCases {
 
     return this.dataServices.favoriteMovies.create(favoriteMovie);
   }
+
+  /**
+   * List all the favorite movies of a user
+   * @param userId
+   * @param language
+   */
   async getFavoriteMovies(
     userId: string,
     language: string,
@@ -56,6 +79,14 @@ export class MovieUseCases {
       }),
     );
   }
+
+  /**
+   * Create a note about a movie
+   * @param movieId
+   * @param language
+   * @param userId
+   * @param createMovieNoteDto
+   */
   async createMovieNote(
     movieId: number,
     language: string,
@@ -72,6 +103,13 @@ export class MovieUseCases {
 
     return this.dataServices.movieNotes.create(newMovieNote);
   }
+
+  /**
+   * Update a note
+   * @param movieNoteId
+   * @param language
+   * @param updateMovieNoteDto
+   */
   async updateMovieNote(
     movieNoteId: string,
     language: string,
@@ -82,6 +120,13 @@ export class MovieUseCases {
     );
     return this.dataServices.movieNotes.updateById(movieNoteId, movieNote);
   }
+
+  /**
+   * Get notes about a movie
+   * @param movieId
+   * @param userId
+   * @param language
+   */
   async getMovieNotesByMovie(
     movieId: number,
     userId: string,
